@@ -1,0 +1,7 @@
+<div class="py-5">
+  <h2>Counter Wall</h2>
+  <button class="btn btn-primary btn-lg" (click)="create()">Create Counter</button>
+</div>
+<div class="row">
+  <counter class="col-4" *ngFor="let counter of counters" [counter]="counter"></counter>
+</div>
