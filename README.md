@@ -1,27 +1,73 @@
-# Ngcounter
+# Angular Counter Exercise
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+## Objectives
 
-## Development server
+* Learn how to use components
+* Create views with components
+* Create templates for views
+* Modify NgModules
+* Describe how property and event bindings work
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Setup
 
-## Code scaffolding
+**Option 1:** Clone this repository
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+cd ngcounter
+npm install
+ng serve --open
+```
 
-## Build
+**Option 2:** From scratch
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+ng new ngcounter
+cd ngcounter
+ng serve --open
+```
 
-## Running unit tests
+The application should launch on `localhost:4200` in your default browser.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Details
 
-## Running end-to-end tests
+This exercise is about getting to know the fundamentals of components by building a simple Counter app. The app allows users to create a counter with the simple click of a button. Each counter has 2 buttons: one to increase the count and another to decrease the count. 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Components
 
-## Further help
+**CounterListComponent**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+This component will be responsible for:
+
+* Creating new `Counter`s
+* Displaying `Counter` instances in a grid
+
+To create it, run: `ng generate component counter-list`
+
+...which generates the following module with files:
+
+- app/counter-list/counter-list.component.ts
+- app/counter-list/counter-list.component.css
+- app/counter-list/counter-list.component.html
+- app/counter-list/counter-list.component.spec.ts
+
+**CounterDetailComponent**
+
+This component is responsible for:
+
+* Displaying a single counter
+* Increasing and decreasing the counters value
+
+To create it, run: `ng generate component counter-detail`
+
+...which generates the following module with files:
+
+- app/counter-detail/counter-detail.component.ts
+- app/counter-detail/counter-detail.component.css
+- app/counter-detail/counter-detail.component.html
+- app/counter-detail/counter-detail.component.spec.ts
+
+### AppModule
+
+Everytime a new component is added to the application, `AppModule` must also be updated. Specifically, the `NgModule` decorator must declare all components that the app depends on. In this case, `CounterListComponent` and `CounterDetailComponent` should each be added to the `declarations` array.
+
+You'll also need to import `FormsModule` and add it to the `imports` of `NgModule`. This will allow access to the `@Input()` object which will come in handy during this exercise.
