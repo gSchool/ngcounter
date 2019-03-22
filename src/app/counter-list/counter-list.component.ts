@@ -10,6 +10,8 @@ import Counter from '../counter';
 export class CounterListComponent implements OnInit {
   // Declare properties for use
   counters: Counter[];
+  name = 'Counter Wall';
+
   constructor() {
     // Define properties for editing
     this.counters = [];
@@ -26,5 +28,3 @@ export class CounterListComponent implements OnInit {
     this.counters.push(counter);
   }
 }
-
-export default CounterListComponent;
