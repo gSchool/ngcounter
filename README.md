@@ -1,5 +1,7 @@
 # Angular Counter Exercise
 
+This exercise is all about learning to create components and how to use bindings and directives. The goal is to make students proficient with using components, bindings and directives.
+
 ## Objectives
 
 * Learn how to use components
@@ -7,14 +9,40 @@
 * Create templates for views
 * Modify NgModules
 * Describe how property and event bindings work
+* Create the Super Auto Counter
+
+This exercise is connected to the Angular Directives exercise. Here we're just creating the counter page, but the follow-on lesson will have students add counters.
+
+The final lab goal is to create the Super Auto Counter!
+Inspiration: https://orteil.dashnet.org/cookieclicker/
+
+The Super Auto Counter has the following feature summary:
+
+- Create counters
+- Auto create super counters from current counters
+- Auto create counters over time
+
+The lab contains step by step instructions and stories for students use to complete the final product.
 
 ## Setup
+
+**Option 1:** Clone this repository (recommended)
+
+```
+cd ngcounter
+npm install
+ng serve --open
+```
+
+**Option 2:** From scratch
 
 ```
 ng new ngcounter
 cd ngcounter
 ng serve --open
 ```
+
+The application should launch on `localhost:4200` in your default browser.
 
 ## Details
 
@@ -59,3 +87,43 @@ To create it, run: `ng generate component counter-detail`
 Everytime a new component is added to the application, `AppModule` must also be updated. Specifically, the `NgModule` decorator must declare all components that the app depends on. In this case, `CounterListComponent` and `CounterDetailComponent` should each be added to the `declarations` array.
 
 You'll also need to import `FormsModule` and add it to the `imports` of `NgModule`. This will allow access to the `@Input()` object which will come in handy during this exercise.
+
+
+# Exercise
+
+Time to use your new knowledge of components, bindings and directives to add some new features to build the AutoCounter
+
+
+Some guidelines:
+
+1. Your final app should be responsive and well designed. No ugly apps; sculpt your CSS and HTML.
+2. You can use your own CSS designs or a framework of your choice.
+
+
+**`CounterListComponent`**
+
+- tracks how many counters are on the page
+- has limit 10 on how many counters can be created
+
+**`CounterComponent`**
+
+- has value of 0 or greater
+- has inactive decrement button when value is 0
+
+**`SuperCounterComponent`**
+
+- is automatically created when 6 counters have been created
+- has levels
+  * level 1: increments/decrements in multiples of 3
+  * level 2: has 'start' button; auto increments +1 every second after 'start' is clicked
+  * level 3: +2 per second
+- has different color based on counter level
+- is twice the size of normal counters
+- has value equal to the sum of the 6 counters it combined
+- makes a sound when created
+
+**`StatsComponent`**
+
+- has counter count
+- has super counter count
+- has clicks per second average (based on auto counters)
