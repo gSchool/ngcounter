@@ -112,11 +112,18 @@ Some guidelines:
 
 **`SuperCounterComponent`**
 
-- has many counters
-- has size
-- is twice the size of normal counters
 - is automatically created when 6 counters have been created
+- has levels
+  * level 1: increments/decrements in multiples of 3
+  * level 2: has 'start' button; auto increments +1 every second after 'start' is clicked
+  * level 3: +2 per second
+- has different color based on counter level
+- is twice the size of normal counters
+- has value equal to the sum of the 6 counters it combined
 - makes a sound when created
 
+**`StatsComponent`**
 
-Inspiration: https://orteil.dashnet.org/cookieclicker/
+- has counter count
+- has super counter count
+- has clicks per second average (based on auto counters)
