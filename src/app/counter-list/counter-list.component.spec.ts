@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CounterListComponent } from './counter-list.component';
+import {CounterDetailComponent} from '../counter-detail/counter-detail.component';
 
 describe('CounterComponent', () => {
   let component: CounterListComponent;
@@ -8,7 +9,7 @@ describe('CounterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CounterListComponent ]
+      declarations: [ CounterListComponent, CounterDetailComponent ]
     })
     .compileComponents();
   }));
@@ -19,7 +20,13 @@ describe('CounterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create counter', () => {
+    expect(component.counters.length).toEqual(0);
+    component.create();
+    expect(component.counters.length).toEqual(1);
   });
 });
