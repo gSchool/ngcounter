@@ -115,8 +115,8 @@ Some guidelines:
 - is automatically created when 6 counters have been created
 - has levels
   * level 1: increments/decrements in multiples of 3
-  * level 2: has 'start' button; auto increments +1 every second after 'start' is clicked
-  * level 3: +2 per second
+  * level 2: consumes 3 super counters; has 'start' button; auto increments +1 every second after 'start' is clicked
+  * level 3: consumes 6 super counters; has no buttons; +2 per second automatically
 - has different color based on counter level
 - is twice the size of normal counters
 - has value equal to the sum of the 6 counters it combined
