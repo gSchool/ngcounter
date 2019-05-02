@@ -2,6 +2,8 @@
 
 This exercise is all about learning to create components and how to use bindings and directives. The goal is to make students proficient with using components, bindings and directives.
 
+> **INSTRUCTOR NOTE:** The exercise has many goals, but 2 blocks minimum will give students optimal practice with Angular basics. For shorter lessons, consider all goals beyond Counter level 1 a stretch goal.
+
 ## Objectives
 
 * Learn how to use components
@@ -103,20 +105,25 @@ Some guidelines:
 **`CounterListComponent`**
 
 - tracks how many counters are on the page
-- has limit 10 on how many counters can be created
 
-**`CounterComponent`**
+**`CounterDetailComponent`**
 
 - has value of 0 or greater
 - has inactive decrement button when value is 0
 
 **`SuperCounterComponent`**
 
-- is automatically created when 6 counters have been created
+- consumes (removes) 6 counters to create 1 super counter
 - has levels
   * level 1: increments/decrements in multiples of 3
-  * level 2: has 'start' button; auto increments +1 every second after 'start' is clicked
-  * level 3: +2 per second
+  * level 2: 
+     - consumes 3 super counters to create 1 super duper counter
+     - has 'start' button 
+     - auto increments +1 every second after 'start' is clicked
+  * level 3: 
+     - consumes 3 super duper counters to create 1 colossal counter
+     - has no buttons
+     - +2 per second automatically
 - has different color based on counter level
 - is twice the size of normal counters
 - has value equal to the sum of the 6 counters it combined
