@@ -2,6 +2,8 @@
 
 This exercise is all about learning to create components and how to use bindings and directives. The goal is to make students proficient with using components, bindings and directives.
 
+> **INSTRUCTOR NOTE:** The exercise has many goals, but 2 blocks minimum will give students optimal practice with Angular basics. For shorter lessons, consider all goals beyond Counter level 1 a stretch goal.
+
 ## Objectives
 
 * Learn how to use components
@@ -48,11 +50,7 @@ The application should launch on `localhost:4200` in your default browser.
 
 This exercise is about getting to know the fundamentals of components by building a simple Counter app. The app allows users to create a counter with the simple click of a button. Each counter has 2 buttons: one to increase the count and another to decrease the count. 
 
-The instructor will first do a walk-thru/code-a-long of this exercise to get you started. Take notes and learn the fundamentals. At each stage you'll have an opportunity to try what you've learned.
-
-After the walk-thru you'll have to complete the items below. *Focus on understanding components, bindings and directives* to keep yourself on track. There's lots to learn about Angular and this lesson is to make you good with components. 
-
-### Creating Components
+### Components
 
 **CounterListComponent**
 
@@ -70,16 +68,33 @@ To create it, run: `ng generate component counter-list`
 - app/counter-list/counter-list.component.html
 - app/counter-list/counter-list.component.spec.ts
 
+**CounterDetailComponent**
+
+This component is responsible for:
+
+* Displaying a single counter
+* Increasing and decreasing the counters value
+
+To create it, run: `ng generate component counter-detail`
+
+...which generates the following module with files:
+
+- app/counter-detail/counter-detail.component.ts
+- app/counter-detail/counter-detail.component.css
+- app/counter-detail/counter-detail.component.html
+- app/counter-detail/counter-detail.component.spec.ts
+
 ### AppModule
 
-Every time a new component is added to the application, `AppModule` must also be updated. Specifically, the `NgModule` decorator must declare all components that the app depends on. In this case, `CounterListComponent` and `CounterDetailComponent` should each be added to the `declarations` array.
+Everytime a new component is added to the application, `AppModule` must also be updated. Specifically, the `NgModule` decorator must declare all components that the app depends on. In this case, `CounterListComponent` and `CounterDetailComponent` should each be added to the `declarations` array.
 
 You'll also need to import `FormsModule` and add it to the `imports` of `NgModule`. This will allow access to the `@Input()` object which will come in handy during this exercise.
 
 
 # Exercise
 
-Time to *use your new knowledge* of components, bindings and directives to add some new features to build the Super Counter. You're not limited to the components and classes below. 
+Time to use your new knowledge of components, bindings and directives to add some new features to build the AutoCounter
+
 
 Some guidelines:
 
@@ -90,26 +105,25 @@ Some guidelines:
 **`CounterListComponent`**
 
 - tracks how many counters are on the page
-- has limit 10 on how many counters can be created
 
 **`CounterDetailComponent`**
 
-- has a counter
-- has an increment event that increases counter.value by 1 per click
-- has an decrement event that decreases counter.value by 1 per click
-- displays individual counters
-
-**`Counter` (class)**
-
-- has a single property: value 
+- has value of 0 or greater
+- has inactive decrement button when value is 0
 
 **`SuperCounterComponent`**
 
-- is automatically created when 6 counters have been created
+- consumes (removes) 6 counters to create 1 super counter
 - has levels
   * level 1: increments/decrements in multiples of 3
-  * level 2: consumes 3 super counters; has 'start' button; auto increments +1 every second after 'start' is clicked
-  * level 3: consumes 6 super counters; has no buttons; +2 per second automatically
+  * level 2: 
+     - consumes 3 super counters to create 1 super duper counter
+     - has 'start' button 
+     - auto increments +1 every second after 'start' is clicked
+  * level 3: 
+     - consumes 3 super duper counters to create 1 colossal counter
+     - has no buttons
+     - +2 per second automatically
 - has different color based on counter level
 - is twice the size of normal counters
 - has value equal to the sum of the 6 counters it combined
