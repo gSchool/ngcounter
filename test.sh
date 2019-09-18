@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ng test --browsers ChromeHeadless
+ng test --browsers ChromeHeadless --watch=false
