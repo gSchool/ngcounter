@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import Counter from '../counter';
+import Counter from '../../models/counter';
+import SuperCounter from '../../models/super-counter';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -10,11 +11,13 @@ import Counter from '../counter';
 export class CounterListComponent implements OnInit {
   // Declare properties for use
   counters: Counter[];
+  superCounters: SuperCounter[];
   name = 'Counter Wall';
 
   constructor() {
     // Define properties for editing
     this.counters = [];
+    this.superCounters = [];
   }
 
   ngOnInit() {
@@ -24,7 +27,20 @@ export class CounterListComponent implements OnInit {
    * Create a new counter object
    */
   create() {
-    const counter = new Counter();
-    this.counters.push(counter);
+    // the 6th item will trigger first condition
+    if (this.counters.length === 5) {
+      this.upgradeCounter();
+    } else {
+      const counter = new Counter();
+      this.counters.push(counter);
+    }
+  }
+
+  /**
+   * Upgrade 6 Counters to 1 SuperCounter
+   */
+  upgradeCounter() {
+    this.counters = [];
+    this.superCounters.push(new SuperCounter());
   }
 }

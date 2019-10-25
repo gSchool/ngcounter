@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import Counter from '../counter';
+import Counter from '../../models/counter';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -26,7 +26,9 @@ export class CounterDetailComponent implements OnInit {
    * Decrease the counter value
    */
   decrement() {
-    this.counter.value--;
+    if (this.counter.value > 0) {
+      this.counter.value--;
+    }
   }
 
 }
