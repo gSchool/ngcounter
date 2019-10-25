@@ -1,7 +1,7 @@
     <div class="card mb-4 counterDetail">
       <div class="card-body">
-        <h4 class="card-title" id="counterValue">{{ counter.value }}</h4>
-        <button id="increment" class="btn btn-primary btn-block" (click)="increment()">+</button>
-        <button id="decrement" class="btn btn-secondary btn-block" (click)="decrement()" [disabled]="counter.value == 0">-</button>
+        <h4 class="card-title">{{ counter.value }}</h4>
+        <button class="btn btn-primary btn-block increment" (click)="increment()">+</button>
+        <button class="btn btn-secondary btn-block decrement" (click)="decrement()" [disabled]="counter.value == 0">-</button>
       </div>
     </div>

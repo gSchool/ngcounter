@@ -54,7 +54,7 @@ Time to use your new knowledge of components, bindings and directives to add the
 
 Some guidelines:
 
-1. Your final app should be responsive and well designed. No ugly apps; sculpt your CSS and HTML.
+1. Your final app should be responsive and well designed and Bootstrap is included. No ugly apps! Sculpt your CSS and HTML.
 2. You can use your own CSS designs or a framework of your choice.
 3. Be creative by adding your own features, such as sound effects, gifs or interesting layouts!
 
@@ -157,5 +157,6 @@ And the Colossal Counter continues incrementing
 ## Additional Resources
 
 - [Official Documentation](https://angular.io/guide/architecture-components#template-syntax)
+- [Official BootStrap](https://getbootstrap.com/docs/4.3/components/)
 - [The Original Cookie Counter](https://orteil.dashnet.org/cookieclicker/)
 
