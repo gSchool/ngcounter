@@ -2,18 +2,19 @@
 
 This exercise is all about learning to create components and how to use bindings and directives. The goal is to make students proficient with using components, bindings and directives.
 
-> **INSTRUCTOR NOTE:** The exercise has many goals, but 2 blocks minimum will give students optimal practice with Angular basics. For shorter lessons, consider all goals beyond Counter level 1 a stretch goal.
+> **INSTRUCTOR NOTE:** The exercise has many goals, but 2 blocks minimum will give students practice with Angular basics. For shorter lessons, consider all goals beyond Counter level 1 a stretch goal.
+
+### Requirements
+- Angular Component Intro
+- Angular Directives Intro 
+
 
 ## Objectives
 
 * Learn how to use components
 * Create views with components
-* Create templates for views
-* Modify NgModules
 * Describe how property and event bindings work
 * Create the Super Auto Counter
-
-This exercise is connected to the Angular Directives exercise. Here we're just creating the counter page, but the follow-on lesson will have students add counters.
 
 The final lab goal is to create the Super Auto Counter!
 Inspiration: https://orteil.dashnet.org/cookieclicker/
@@ -54,7 +55,7 @@ Time to use your new knowledge of components, bindings and directives to add the
 
 Some guidelines:
 
-1. Your final app should be responsive and well designed and Bootstrap is included. No ugly apps! Sculpt your CSS and HTML.
+1. Your final app should be responsive and well designed. Bootstrap is included. No ugly apps! Sculpt your CSS and HTML.
 2. You can use your own CSS designs or a framework of your choice.
 3. Be creative by adding your own features, such as sound effects, gifs or interesting layouts!
 
@@ -71,7 +72,7 @@ Feature: Counters
   A counter is a box containing a value and 2 buttons. The value can be increased or decreased by clicking the + or - buttons.
   
 Scenario: The 'Create' button is active.
-Given the 'Create' button is clicked
+When the 'Create' button is clicked
 Then a new counter is created and rendered
 And is added to the list of counters
 
