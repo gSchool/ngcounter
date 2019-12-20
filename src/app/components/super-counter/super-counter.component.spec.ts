@@ -47,6 +47,12 @@ describe('SuperCounterComponent (isolated)', () => {
     component.decrement();
     expect(component.counter.value).toEqual(3);
   });
+
+  it('should not decrease counter value below 0', () =>  {
+    expect(component.counter.value).toEqual(0);
+    component.decrement();
+    expect(component.counter.value).toEqual(0);
+  });
 });
 
 describe('SuperCounterComponent (shallow)', () => {

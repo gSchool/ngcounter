@@ -2,6 +2,7 @@ import {TestBed, async, ComponentFixture} from '@angular/core/testing';
 import { AppComponent } from '../app.component';
 import {CounterListComponent} from '../components/counter-list/counter-list.component';
 import {CounterDetailComponent} from '../components/counter-detail/counter-detail.component';
+import { SuperCounterComponent } from '../components/super-counter/super-counter.component';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -13,6 +14,7 @@ describe('AppComponent', () => {
         AppComponent,
         CounterListComponent,
         CounterDetailComponent,
+        SuperCounterComponent
       ],
     }).compileComponents();
   }));
