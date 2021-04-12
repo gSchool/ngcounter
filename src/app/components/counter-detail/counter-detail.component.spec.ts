@@ -76,13 +76,13 @@ describe('CounterDetailComponent (shallow)', () => {
   });
 
   it('element should display counter value', () => {
-    const el = counterEl.querySelector('#counterValue');
+    const el = counterEl.querySelector('.card-title');
     expect(el.textContent).toEqual('0');
   });
 
   it('increment button should increase counter value', () => {
-    const el = counterEl.querySelector('#counterValue');
-    const buttonEl = counterEl.querySelector('#increment');
+    const el = counterEl.querySelector('.card-title');
+    const buttonEl = counterEl.querySelector('.increment');
     buttonEl.click();
     fixture.detectChanges(); // update the view!
     expect(component.counter.value).toEqual(1);
@@ -90,9 +90,9 @@ describe('CounterDetailComponent (shallow)', () => {
   });
 
   it('decrement button should decrease counter value', () => {
-    const el = counterEl.querySelector('#counterValue');
-    const increaseEl = counterEl.querySelector('#increment');
-    const decreaseEl = counterEl.querySelector('#decrement');
+    const el = counterEl.querySelector('.card-title');
+    const increaseEl = counterEl.querySelector('.increment');
+    const decreaseEl = counterEl.querySelector('.decrement');
     increaseEl.click();
     fixture.detectChanges();
     expect(component.counter.value).toEqual(1);
@@ -103,9 +103,8 @@ describe('CounterDetailComponent (shallow)', () => {
   });
 
   it('decrement button should be disabled when value is 0', function() {
-    const el = counterEl.querySelector('#counterValue');
     expect(component.counter.value).toEqual(0);
-    const decreaseEl = counterEl.querySelector('#decrement');
+    const decreaseEl = counterEl.querySelector('.decrement');
     expect(decreaseEl.disabled).toBeTruthy();
   });
 });

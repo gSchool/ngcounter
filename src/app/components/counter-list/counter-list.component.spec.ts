@@ -2,6 +2,7 @@ import {async, ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing
 
 import { CounterListComponent } from './counter-list.component';
 import { CounterDetailComponent } from '../counter-detail/counter-detail.component';
+import { SuperCounterComponent } from '../super-counter/super-counter.component';
 
 describe('CounterListComponent', () => {
   let component: CounterListComponent;
@@ -9,7 +10,7 @@ describe('CounterListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CounterListComponent, CounterDetailComponent ]
+      declarations: [ CounterListComponent, CounterDetailComponent, SuperCounterComponent ]
     })
     .compileComponents();
   }));
@@ -27,6 +28,7 @@ describe('CounterListComponent', () => {
   it('"Create" button should create a Counter', () => {
     expect(component.counters.length).toEqual(0);
     const buttonEl = fixture.nativeElement.querySelector('button');
+    expect(buttonEl).toBeDefined();
     buttonEl.click();
     expect(component.counters.length).toEqual(1);
   });
@@ -37,7 +39,10 @@ describe('CounterListComponent', () => {
       buttonEl.click();
     }
     fixture.detectChanges();
+    const superEl = fixture.nativeElement.querySelector('.superCounter .card-title');
     expect(component.counters.length).toEqual(0);
     expect(component.superCounters.length).toEqual(1);
+    // verify element is on the page
+    expect(superEl.textContent).toEqual('0');
   });
 });

@@ -41,6 +41,7 @@ export class CounterListComponent implements OnInit {
    */
   upgradeCounter() {
     this.counters = [];
-    this.superCounters.push(new SuperCounter());
+    const superCounter = new SuperCounter();
+    this.superCounters.push(superCounter);
   }
 }

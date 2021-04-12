@@ -24,6 +24,8 @@ export class SuperCounterComponent implements OnInit {
    * Decrease the counter value
    */
   decrement() {
-    this.counter.value -= 3;
+    if (this.counter.value > 0) {
+      this.counter.value -= 3;
+    }
   }
 }
