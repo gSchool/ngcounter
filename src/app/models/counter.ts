@@ -1,5 +1,3 @@
-export class Counter {
+export default class Counter {
   value = 0;
 }
-
-export default Counter;

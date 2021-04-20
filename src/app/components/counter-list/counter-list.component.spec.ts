@@ -33,7 +33,7 @@ describe('CounterListComponent', () => {
     expect(component.counters.length).toEqual(1);
   });
 
-  it('should combine 6 Counters into 1 Super Counter', () => {
+  it('should combine 5 Counters into 1 Super Counter', () => {
     const buttonEl = fixture.nativeElement.querySelector('button');
     for (let i = 0; i < 6; i++) {
       buttonEl.click();

@@ -85,8 +85,8 @@ Scenario: There's 5 counters rendered to the view.
 Given the 'Create' button is clicked
 When the CounterList has 6 counters
 Then a Super Counter will be created and rendered
-And it will have a starting value equal to the value of the 6 Counters
-And the 6 counters will be removed from the view.
+And it will have a starting value equal to the value of the 5 Counters
+And the 5 counters will be removed from the view.
 
 Scenario: 6 Counters are created.
 Given a Super Counter has been created

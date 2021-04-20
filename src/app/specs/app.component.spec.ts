@@ -29,12 +29,12 @@ describe('AppComponent', () => {
     expect(app).toBeDefined();
   });
 
-  it(`should have as title 'Angular Counter'`, () => {
-    expect(app.title).toEqual('Angular Counter');
+  it(`should have as title 'Super Counters'`, () => {
+    expect(app.title).toEqual('Super Counters');
   });
 
   it('should render title in a h1 tag', () => {
     const appEl = fixture.debugElement.nativeElement;
-    expect(appEl.querySelector('h1').textContent).toContain('Angular Counter');
+    expect(appEl.querySelector('h1').textContent).toContain('Super Counters');
   });
 });

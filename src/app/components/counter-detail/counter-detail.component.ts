@@ -3,7 +3,7 @@ import Counter from '../../models/counter';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'counter',
+  selector: 'counter-detail',
   templateUrl: './counter-detail.component.html',
   styleUrls: ['./counter-detail.component.css']
 })

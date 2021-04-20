@@ -10,18 +10,13 @@ import SuperCounter from '../../models/super-counter';
 })
 export class CounterListComponent implements OnInit {
   // Declare properties for use
-  counters: Counter[];
-  superCounters: SuperCounter[];
+  counters: Counter[] = [];
+  superCounters: SuperCounter[] = [];
   name = 'Counter Wall';
 
-  constructor() {
-    // Define properties for editing
-    this.counters = [];
-    this.superCounters = [];
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   /**
    * Create a new counter object
@@ -40,8 +35,13 @@ export class CounterListComponent implements OnInit {
    * Upgrade 6 Counters to 1 SuperCounter
    */
   upgradeCounter() {
+    let total = 0;
+    for (const counter of this.counters) {
+      total += counter.value;
+    }
     this.counters = [];
     const superCounter = new SuperCounter();
+    superCounter.value = total;
     this.superCounters.push(superCounter);
   }
 }

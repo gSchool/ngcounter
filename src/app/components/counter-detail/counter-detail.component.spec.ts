@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import { CounterDetailComponent } from './counter-detail.component';
 import Counter from '../../models/counter';
@@ -6,21 +6,11 @@ import Counter from '../../models/counter';
 describe('CounterDetailComponent (isolated)', () => {
   let component: CounterDetailComponent;
   let fixture: ComponentFixture<CounterDetailComponent>;
-  let counter: Counter;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CounterDetailComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CounterDetailComponent);
     component = fixture.componentInstance;
-    // The bindings accept objects
-    counter = { value: 0 };
-    component.counter = counter;
+    component.counter = new Counter();
     fixture.detectChanges();
   });
 
@@ -55,25 +45,15 @@ describe('CounterDetailComponent (isolated)', () => {
 describe('CounterDetailComponent (shallow)', () => {
   let component: CounterDetailComponent;
   let fixture: ComponentFixture<CounterDetailComponent>;
-  let counter: Counter;
   let counterEl;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CounterDetailComponent ]
-    })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     fixture = TestBed.createComponent(CounterDetailComponent);
     component = fixture.componentInstance;
-    counterEl = fixture.debugElement.nativeElement;
-    // The binding expects counter objects
-    counter = { value: 0 };
-    component.counter = counter;
+    counterEl = fixture.nativeElement;
+    component.counter = new Counter();
     fixture.detectChanges();
-  });
+  }));
 
   it('element should display counter value', () => {
     const el = counterEl.querySelector('.card-title');
@@ -91,18 +71,16 @@ describe('CounterDetailComponent (shallow)', () => {
 
   it('decrement button should decrease counter value', () => {
     const el = counterEl.querySelector('.card-title');
-    const increaseEl = counterEl.querySelector('.increment');
     const decreaseEl = counterEl.querySelector('.decrement');
-    increaseEl.click();
+    component.counter.value = 1;
     fixture.detectChanges();
-    expect(component.counter.value).toEqual(1);
     decreaseEl.click();
     fixture.detectChanges();
     expect(component.counter.value).toEqual(0);
     expect(el.textContent).toEqual('0');
   });
 
-  it('decrement button should be disabled when value is 0', function() {
+  it('decrement button should be disabled when value is 0', () => {
     expect(component.counter.value).toEqual(0);
     const decreaseEl = counterEl.querySelector('.decrement');
     expect(decreaseEl.disabled).toBeTruthy();
