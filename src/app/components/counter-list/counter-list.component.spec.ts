@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CounterListComponent } from './counter-list.component';
 import { CounterDetailComponent } from '../counter-detail/counter-detail.component';
@@ -8,18 +8,14 @@ describe('CounterListComponent', () => {
   let component: CounterListComponent;
   let fixture: ComponentFixture<CounterListComponent>;
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CounterListComponent, CounterDetailComponent, SuperCounterComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
+    }).compileComponents();
     fixture = TestBed.createComponent(CounterListComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture.autoDetectChanges();
+  }));
 
   it('should create component', () => {
     expect(component).toBeTruthy();
@@ -38,11 +34,9 @@ describe('CounterListComponent', () => {
     for (let i = 0; i < 6; i++) {
       buttonEl.click();
     }
-    fixture.detectChanges();
     const superEl = fixture.nativeElement.querySelector('.superCounter .card-title');
     expect(component.counters.length).toEqual(0);
     expect(component.superCounters.length).toEqual(1);
-    // verify element is on the page
     expect(superEl.textContent).toEqual('0');
   });
 });

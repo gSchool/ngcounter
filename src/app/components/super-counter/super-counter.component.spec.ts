@@ -1,31 +1,23 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SuperCounterComponent } from './super-counter.component';
 import SuperCounter from '../../models/super-counter';
-import {count} from 'rxjs/operators';
 
 describe('SuperCounterComponent (isolated)', () => {
   let component: SuperCounterComponent;
   let fixture: ComponentFixture<SuperCounterComponent>;
-  let superCounter: SuperCounter;
   let element;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SuperCounterComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
+    }).compileComponents();
     fixture = TestBed.createComponent(SuperCounterComponent);
     component = fixture.componentInstance;
     element = fixture.debugElement.nativeElement;
-    // The binding expects counter objects
-    superCounter = { value: 0 };
-    component.counter = superCounter;
+    component.counter = new SuperCounter();
     fixture.detectChanges();
-  });
+  }));
 
   it('should create', () => {
     expect(component).toBeDefined();
@@ -58,25 +50,18 @@ describe('SuperCounterComponent (isolated)', () => {
 describe('SuperCounterComponent (shallow)', () => {
   let component: SuperCounterComponent;
   let fixture: ComponentFixture<SuperCounterComponent>;
-  let superCounter: SuperCounter;
   let element;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SuperCounterComponent ]
-    })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
+    }).compileComponents();
     fixture = TestBed.createComponent(SuperCounterComponent);
     component = fixture.componentInstance;
     element = fixture.debugElement.nativeElement;
-    // The binding expects counter objects
-    superCounter = { value: 0 };
-    component.counter = superCounter;
-    fixture.detectChanges();
-  });
+    component.counter = new SuperCounter();
+    fixture.autoDetectChanges();
+  }));
 
   it('should display counter value', () => {
     const counterVal = element.querySelector('.card-title');
@@ -87,7 +72,6 @@ describe('SuperCounterComponent (shallow)', () => {
     const incrementButton = element.querySelector('.increment');
     const counterVal = element.querySelector('.card-title');
     incrementButton.click();
-    fixture.detectChanges();  // update view!
 
     expect(component.counter.value).toEqual(3);
     expect(counterVal.textContent).toEqual('3');
@@ -97,11 +81,10 @@ describe('SuperCounterComponent (shallow)', () => {
     const incrementButton = element.querySelector('.increment');
     const decrementButton = element.querySelector('.decrement');
     const counterVal = element.querySelector('.card-title');
+
     incrementButton.click();
-    fixture.detectChanges();
     expect(component.counter.value).toEqual(3);
     decrementButton.click();
-    fixture.detectChanges();  // update view!
     expect(component.counter.value).toEqual(0);
     expect(counterVal.textContent).toEqual('0');
   });

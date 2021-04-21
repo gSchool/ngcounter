@@ -8,7 +8,6 @@ import Counter from '../../models/counter';
   styleUrls: ['./counter-detail.component.css']
 })
 export class CounterDetailComponent implements OnInit {
-  // A property binding to pass Counter objects to
   @Input() counter: Counter;
   constructor() {}
 

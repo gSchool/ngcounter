@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CounterDetailComponent } from './counter-detail.component';
 import Counter from '../../models/counter';
@@ -6,23 +6,17 @@ import Counter from '../../models/counter';
 describe('CounterDetailComponent (isolated)', () => {
   let component: CounterDetailComponent;
   let fixture: ComponentFixture<CounterDetailComponent>;
-  let counter: Counter;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CounterDetailComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
+    }).compileComponents();
     fixture = TestBed.createComponent(CounterDetailComponent);
     component = fixture.componentInstance;
-    // The bindings accept objects
-    counter = { value: 0 };
-    component.counter = counter;
+    component.counter = new Counter();
     fixture.detectChanges();
-  });
+    fixture.autoDetectChanges();
+  }));
 
   it('should instantiate', () => {
     expect(component).toBeDefined();
@@ -55,25 +49,18 @@ describe('CounterDetailComponent (isolated)', () => {
 describe('CounterDetailComponent (shallow)', () => {
   let component: CounterDetailComponent;
   let fixture: ComponentFixture<CounterDetailComponent>;
-  let counter: Counter;
   let counterEl;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CounterDetailComponent ]
-    })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
+    }).compileComponents();
     fixture = TestBed.createComponent(CounterDetailComponent);
     component = fixture.componentInstance;
     counterEl = fixture.debugElement.nativeElement;
-    // The binding expects counter objects
-    counter = { value: 0 };
-    component.counter = counter;
-    fixture.detectChanges();
-  });
+    component.counter = new Counter();
+    fixture.autoDetectChanges();
+  }));
 
   it('element should display counter value', () => {
     const el = counterEl.querySelector('.card-title');
@@ -84,7 +71,6 @@ describe('CounterDetailComponent (shallow)', () => {
     const el = counterEl.querySelector('.card-title');
     const buttonEl = counterEl.querySelector('.increment');
     buttonEl.click();
-    fixture.detectChanges(); // update the view!
     expect(component.counter.value).toEqual(1);
     expect(el.textContent).toEqual('1');
   });
@@ -94,10 +80,8 @@ describe('CounterDetailComponent (shallow)', () => {
     const increaseEl = counterEl.querySelector('.increment');
     const decreaseEl = counterEl.querySelector('.decrement');
     increaseEl.click();
-    fixture.detectChanges();
     expect(component.counter.value).toEqual(1);
     decreaseEl.click();
-    fixture.detectChanges();
     expect(component.counter.value).toEqual(0);
     expect(el.textContent).toEqual('0');
   });
