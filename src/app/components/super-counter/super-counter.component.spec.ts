@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SuperCounterComponent } from './super-counter.component';
 import SuperCounter from '../../models/super-counter';
-import {count} from 'rxjs/operators';
+import ICounter from '../../shared/ICounter';
 
 describe('SuperCounterComponent (isolated)', () => {
   let component: SuperCounterComponent;
@@ -10,7 +10,7 @@ describe('SuperCounterComponent (isolated)', () => {
   let superCounter: SuperCounter;
   let element;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SuperCounterComponent ]
     })
@@ -22,7 +22,7 @@ describe('SuperCounterComponent (isolated)', () => {
     component = fixture.componentInstance;
     element = fixture.debugElement.nativeElement;
     // The binding expects counter objects
-    superCounter = { value: 0 };
+    superCounter = new SuperCounter();
     component.counter = superCounter;
     fixture.detectChanges();
   });
@@ -58,10 +58,10 @@ describe('SuperCounterComponent (isolated)', () => {
 describe('SuperCounterComponent (shallow)', () => {
   let component: SuperCounterComponent;
   let fixture: ComponentFixture<SuperCounterComponent>;
-  let superCounter: SuperCounter;
+  let superCounter: ICounter;
   let element;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SuperCounterComponent ]
     })
@@ -73,7 +73,7 @@ describe('SuperCounterComponent (shallow)', () => {
     component = fixture.componentInstance;
     element = fixture.debugElement.nativeElement;
     // The binding expects counter objects
-    superCounter = { value: 0 };
+    superCounter = new SuperCounter();
     component.counter = superCounter;
     fixture.detectChanges();
   });
@@ -106,7 +106,7 @@ describe('SuperCounterComponent (shallow)', () => {
     expect(counterVal.textContent).toEqual('0');
   });
 
-  it('decrement button should be disabled when value is 0', function() {
+  it('decrement button should be disabled when value is 0', () => {
     expect(component.counter.value).toEqual(0);
     const decreaseEl = element.querySelector('.decrement');
     expect(decreaseEl.disabled).toBeTruthy();

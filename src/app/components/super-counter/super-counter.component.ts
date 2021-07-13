@@ -13,19 +13,13 @@ export class SuperCounterComponent implements OnInit {
 
   ngOnInit() {}
 
-  /**
-   * Increase the counter value
-   */
   increment() {
-    this.counter.value += 3;
+    this.counter.increment();
   }
 
-  /**
-   * Decrease the counter value
-   */
   decrement() {
-    if (this.counter.value > 0) {
-      this.counter.value -= 3;
+    if ((this.counter.value - 3) >= 0) {
+      this.counter.decrement();
     }
   }
 }

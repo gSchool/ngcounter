@@ -18,9 +18,6 @@ export class CounterListComponent implements OnInit {
 
   ngOnInit() {}
 
-  /**
-   * Create a new counter object
-   */
   create() {
     // the 6th item will trigger first condition
     if (this.counters.length === 5) {
@@ -31,9 +28,6 @@ export class CounterListComponent implements OnInit {
     }
   }
 
-  /**
-   * Upgrade 6 Counters to 1 SuperCounter
-   */
   upgradeCounter() {
     let total = 0;
     for (const counter of this.counters) {

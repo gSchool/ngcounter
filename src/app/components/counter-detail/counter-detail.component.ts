@@ -15,19 +15,13 @@ export class CounterDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  /**
-   * Increase the counter value
-   */
   increment() {
-    this.counter.value++;
+    this.counter.increment();
   }
 
-  /**
-   * Decrease the counter value
-   */
   decrement() {
     if (this.counter.value > 0) {
-      this.counter.value--;
+      this.counter.decrement();
     }
   }
 
