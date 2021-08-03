@@ -1,4 +1,4 @@
-# Super Auto Counter
+# Super Duper Counters
 
 This exercise is about getting to know the fundamentals of Angular components. The app allows users to create counters with the simple click of a button. Eventually the counters should take over and begin creating themselves.
 
