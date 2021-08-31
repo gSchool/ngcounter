@@ -9,6 +9,8 @@ export default class SuperCounter implements ICounter {
   }
 
   decrement() {
-    this.value -= this.step;
+    if (this.value - 3 > 0) {
+      this.value -= this.step;
+    }
   }
 }

@@ -18,8 +18,6 @@ export class SuperCounterComponent implements OnInit {
   }
 
   decrement() {
-    if ((this.counter.value - 3) >= 0) {
-      this.counter.decrement();
-    }
+    this.counter.decrement();
   }
 }

@@ -19,8 +19,8 @@ export class CounterListComponent implements OnInit {
   ngOnInit() {}
 
   create() {
-    // the 6th item will trigger first condition
-    if (this.counters.length === 5) {
+    // the nth item will trigger first condition
+    if (this.counters.length === 3) {
       this.upgradeCounter();
     } else {
       const counter = new Counter();
@@ -29,13 +29,9 @@ export class CounterListComponent implements OnInit {
   }
 
   upgradeCounter() {
-    let total = 0;
-    for (const counter of this.counters) {
-      total += counter.value;
-    }
-    this.counters = [];
     const superCounter = new SuperCounter();
-    superCounter.value = total;
+    superCounter.value = this.counters.reduce((acc, curr) => acc + curr.value, 0);
+    this.counters = [];
     this.superCounters.push(superCounter);
   }
 }
