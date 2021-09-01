@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   // These properties can be used in templates.
   // When you launch the application, where can you see this title?
-  title = 'Super Counters';
+  title = 'Super Duper Counters';
 }

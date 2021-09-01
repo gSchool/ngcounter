@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Counter from '../../models/counter';
 import SuperCounter from '../../models/super-counter';
+import {SuperDuperCounter} from '../../models/super-duper-counter';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -12,6 +13,7 @@ export class CounterListComponent implements OnInit {
   // Declare properties for use
   counters: Counter[] = [];
   superCounters: SuperCounter[] = [];
+  superDuperCounters: SuperDuperCounter[] = [];
   name = 'Counter Wall';
 
   constructor() {}
@@ -20,8 +22,10 @@ export class CounterListComponent implements OnInit {
 
   create() {
     // the nth item will trigger first condition
-    if (this.counters.length === 3) {
+    if (this.counters.length > 3) {
       this.upgradeCounter();
+    } else if (this.superCounters.length > 3) {
+      this.upgradeSuperCounter();
     } else {
       const counter = new Counter();
       this.counters.push(counter);
@@ -33,5 +37,12 @@ export class CounterListComponent implements OnInit {
     superCounter.value = this.counters.reduce((acc, curr) => acc + curr.value, 0);
     this.counters = [];
     this.superCounters.push(superCounter);
+  }
+
+  upgradeSuperCounter() {
+    const superDuperCounter = new SuperDuperCounter();
+    superDuperCounter.value = this.superCounters.reduce((acc, curr) => acc + curr.value, 0);
+    this.superCounters = [];
+    this.superDuperCounters.push(superDuperCounter);
   }
 }

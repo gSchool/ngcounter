@@ -7,4 +7,7 @@
   <div *ngIf="superCounters.length > 0">
     <app-super-counter class="col-5" *ngFor="let superCounter of superCounters" [counter]="superCounter"></app-super-counter>
   </div>
+  <div *ngIf="superDuperCounters.length > 0">
+    <app-super-duper-counter class="col-6" *ngFor="let sdCounter of superDuperCounters" [counter]="sdCounter"></app-super-duper-counter>
+  </div>
 </div>
